@@ -33,17 +33,16 @@ function renderPosts() {
           </div>
         </header>
         <section class="post-img">
-          <img src="${post.post}" alt="" />
+          <img src="${post.post}" alt="" id="post-${post.id}"/>
         </section>
         <footer class="post-footer">
           <div class="post-actions">
-            <i class="bi bi-heart"></i>
-            <i class="bi bi-heart-fill"></i>
+            <i class="bi bi-heart" id="heart-${post.id}"></i>
             <i class="bi bi-chat"></i>
             <i class="bi bi-send"></i>
           </div>
           <div class="post-meta">
-            <h3 class="post-likes">${post.likes} likes</h3>
+            <h3 class="post-likes" id="likes-${post.id}">${post.likes} likes</h3>
           </div>
           <div class="post-content">
             <h3 class="post-user">${post.username}</h3>
@@ -52,6 +51,41 @@ function renderPosts() {
         </footer>
       </article>`;
   }
+  // Add event listeners to heart icons after rendering posts
+  posts.forEach((post) => {
+    const heartEl = document.getElementById(`heart-${post.id}`);
+    const postEl = document.getElementById(`post-${post.id}`);
+    heartEl.addEventListener("click", () => clickToLikePost(post.id));
+    postEl.addEventListener("dblclick", () => clickToLikePost(post.id));
+  });
+}
+
+function clickToLikePost(postId) {
+  const post = posts.find((p) => p.id === postId);
+  const heartEl = document.getElementById(`heart-${postId}`);
+  const likesEl = document.getElementById(`likes-${postId}`);
+
+  function likePost(post) {
+    if (!user.likedPosts.includes(post.id)) {
+      heartEl.classList.remove("bi-heart");
+      heartEl.classList.add("bi-heart-fill", "crimson");
+      post.likes++;
+      likesEl.textContent = `${post.likes} likes`;
+      user.likedPosts.push(post.id);
+    } else if (user.likedPosts.includes(post.id)) {
+      heartEl.classList.add("bi-heart");
+      heartEl.classList.remove("bi-heart-fill", "crimson");
+      post.likes--;
+      likesEl.textContent = `${post.likes} likes`;
+      const index = user.likedPosts.indexOf(post.id);
+      user.likedPosts.splice(index, 1);
+    }
+
+    console.log(post.likes);
+    console.log(user);
+  }
+
+  likePost(post);
 }
 
 renderPosts();
