@@ -1,5 +1,110 @@
-html, body {
-    margin: 0;
-    padding: 0;
+* {
+  box-sizing: border-box;
 }
 
+body {
+  font-family: "Source Sans 3", serif;
+  background-color: #eaeaea;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+}
+
+img {
+  width: 100%;
+  height: auto;
+}
+
+.app-wrapper {
+  width: 375px;
+  margin: 0 auto;
+  background-color: #ffffff;
+}
+
+.app-header {
+  height: 67px;
+  border-bottom: 2px solid #c6c6c6;
+}
+
+.logo {
+  width: 135px;
+}
+
+.app-nav {
+  height: 100%;
+  width: 100%;
+  padding: 0 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.user-avatar,
+.post-author-avatar {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+}
+
+.post-header {
+  height: 55px;
+  padding: 0 15px;
+  display: flex;
+  align-items: center;
+}
+
+.post-header-inner {
+  padding-left: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.post-author {
+  margin: 0;
+  font-size: 13px;
+}
+
+.post-author-location {
+  margin: 0;
+  font-size: 12px;
+}
+
+.post-footer {
+  padding: 15px;
+}
+
+.post-actions {
+  margin-bottom: 13px;
+}
+
+.post-actions .bi {
+  font-size: 22px;
+  margin-right: 10px;
+}
+
+.post-meta,
+.post-content {
+  display: flex;
+}
+
+.post-meta {
+  margin-bottom: 18px;
+}
+
+.post-likes,
+.post-user,
+.post-title {
+  font-size: 13px;
+}
+
+.post-likes,
+.post-user {
+  margin-right: 3px;
+}
