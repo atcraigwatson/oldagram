@@ -7,7 +7,15 @@ const user = {
 };
 
 // Get element with class "content-feed"
+const appNavEl = document.getElementById("app-nav");
 const feedEL = document.getElementById("content-feed");
+const userAvatarEl = document.getElementById("user-avatar");
+
+function renderUserAvatar() {
+  appNavEl.innerHTML += `
+    <img id="user-avatar" class="user-avatar" src="${user.avatar}" alt="Profile picture of Per wih decorative purple and orange background." />`;
+}
+renderUserAvatar();
 
 function renderPosts() {
   for (let post of posts) {
