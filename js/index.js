@@ -1,5 +1,11 @@
 import posts from "./posts.js";
 
+const user = {
+  name: "Per",
+  avatar: "images/user-avatar.png",
+  likedPosts: [],
+};
+
 // Get element with class "content-feed"
 const feedEL = document.getElementById("content-feed");
 
