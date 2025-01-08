@@ -55,8 +55,12 @@ function renderPosts() {
   posts.forEach((post) => {
     const heartEl = document.getElementById(`heart-${post.id}`);
     const postEl = document.getElementById(`post-${post.id}`);
+    const postImgEl = document.getElementById(`feed-${post.id}`);
     heartEl.addEventListener("click", () => clickToLikePost(post.id));
-    postEl.addEventListener("dblclick", () => clickToLikePost(post.id));
+    postEl.addEventListener("dblclick", (e) => {
+      clickToLikePost(post.id);
+      doubleClickHeartAnimation(e, post.id);
+    });
   });
 }
 
@@ -86,6 +90,21 @@ function clickToLikePost(postId) {
   }
 
   likePost(post);
+}
+
+function doubleClickHeartAnimation(e, postId) {
+  const post = posts.find((p) => p.id === postId);
+  const postImgEl = document.getElementById(`post-${postId}`);
+
+  const rect = postImgEl.getBoundingClientRect();
+  let x = e.clientX + window.scrollX;
+  let y = e.clientY + window.scrollY;
+  let heart = `<i class="bi bi-heart-fill crimson" style="left:${x}px;top:${y}px;" id="post-${postId}-heart"></i>`;
+  postImgEl.insertAdjacentHTML("afterend", heart);
+
+  setTimeout(() => {
+    document.querySelector(`#post-${postId}-heart`).remove();
+  }, 899);
 }
 
 renderPosts();
