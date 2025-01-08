@@ -46,6 +46,10 @@ img {
   align-items: center;
 }
 
+.post-wrapper {
+  border-bottom: 2px solid #c6c6c6;
+}
+
 .user-avatar,
 .post-author-avatar {
   width: 34px;
